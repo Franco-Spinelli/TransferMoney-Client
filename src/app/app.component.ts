@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { UserServiceService } from './services/user-service.service';
+import { User } from './auth/user';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'transferMoneyClient';
+  title = 'my-angular-app';
+  user?:User;
+  constructor(private userService:UserServiceService){
+    this.userService.getUser(1).subscribe({
+      next:(userData)=>{
+        this.user = userData;
+      },
+      error:(errorData)=>{
+        console.log("error")
+      }
+    })
+  }
 }
