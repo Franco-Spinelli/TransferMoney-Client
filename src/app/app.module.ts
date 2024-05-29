@@ -15,6 +15,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { JwtInterceptorService } from './auth/jwt-interceptor.service';
 import { ErrorInterceptorService } from './auth/error-interceptor.service';
 import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     LoginComponent,
     NavBarComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
