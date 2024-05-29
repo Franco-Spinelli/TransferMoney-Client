@@ -14,13 +14,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { JwtInterceptorService } from './auth/jwt-interceptor.service';
 import { ErrorInterceptorService } from './auth/error-interceptor.service';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavBarComponent
+    NavBarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { UserServiceService } from '../services/user-service.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../auth/login.service';
 import { LoginRequest } from '../auth/loginRequest';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    public loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
@@ -24,6 +26,11 @@ export class LoginComponent {
   login() {
     this.loginService.login(this.loginForm.value as LoginRequest).subscribe((data) => {
       console.log(data);
-    });
+      this.router.navigateByUrl("")
+      
+    },
+    (error) => {
+      alert("Username or password incorrect")
+    })
   }
 }

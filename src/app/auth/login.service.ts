@@ -4,6 +4,7 @@ import { User } from './user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LoginRequest } from './loginRequest';
 import { environment } from '../../environments/environment';
+import { RegisterRequest } from './registerRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,17 @@ export class LoginService {
    }
    login(credentials: LoginRequest):Observable<any>{
     return this.http.post<any>(environment.urlHost + "auth/login",credentials).pipe(
+      tap((userData)=>{
+        sessionStorage.setItem("token",userData.token);
+        this.currentUserData.next(userData.token);
+        this.currentLoginOn.next(true);
+      }),
+      map((userData)=>userData.token),
+      catchError(this.hadleError)
+    )
+   }
+   register(credentials: RegisterRequest):Observable<any>{
+    return this.http.post<any>(environment.urlHost + "auth/register",credentials).pipe(
       tap((userData)=>{
         sessionStorage.setItem("token",userData.token);
         this.currentUserData.next(userData.token);
@@ -49,5 +61,10 @@ export class LoginService {
   }
   get userToken():String{
     return this.currentUserData.value;
+  }
+
+  public isUserLoggedIn(): boolean{
+    if(this.userToken == "") return false;
+    return true;
   }
 }

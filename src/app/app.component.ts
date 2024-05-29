@@ -11,13 +11,13 @@ export class AppComponent {
   title = 'my-angular-app';
   user?:User;
   constructor(private userService:UserServiceService){
-    this.userService.getUser(1).subscribe({
-      next:(userData)=>{
-        this.user = userData;
-      },
-      error:(errorData)=>{
-        console.log("error")
-      }
-    })
+   // this.userService.getUser(1).subscribe({
+    //  next:(userData)=>{
+      //  this.user = userData;
+      //},
+      //error:(errorData)=>{
+       // console.log("error")
+      //}
+    //})
   }
 }
