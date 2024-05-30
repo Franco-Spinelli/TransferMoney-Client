@@ -16,6 +16,7 @@ import { JwtInterceptorService } from './auth/jwt-interceptor.service';
 import { ErrorInterceptorService } from './auth/error-interceptor.service';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
