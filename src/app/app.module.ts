@@ -17,8 +17,8 @@ import { ErrorInterceptorService } from './auth/error-interceptor.service';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +37,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync(),

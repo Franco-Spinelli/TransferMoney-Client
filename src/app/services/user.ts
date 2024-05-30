@@ -7,5 +7,5 @@ export interface User {
     lastname?: string;
     dni: number;
     cbu?: bigint;
-    moneyAccount?: number;
+    moneyAccount: number;
   }

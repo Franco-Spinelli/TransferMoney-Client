@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginComponent } from '../login/login.component';
 import { LoginService } from '../auth/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { LoginService } from '../auth/login.service';
 })
 export class RegisterComponent {
   registerForm: FormGroup ;
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService){
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router){
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -25,6 +26,7 @@ export class RegisterComponent {
       this.loginService.register(this.registerForm.value).subscribe((data)=>{
         console.log(data);
         alert("Welcome to TransferMoney!")
+        this.router.navigateByUrl("/user-dashboard")
       },
       (error)=>{
         console.log(error);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
-import { User } from './user';
+import { User } from '../services/user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LoginRequest } from './loginRequest';
 import { environment } from '../../environments/environment';

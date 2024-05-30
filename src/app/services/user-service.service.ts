@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../auth/user';
+import { User } from './user';
+import { Transfer } from './transfer';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,10 @@ import { User } from '../auth/user';
 export class UserServiceService {
 
   constructor(private http:HttpClient) { }
-  getUser(id:number):Observable<User>{
-    return this.http.get<User>('http://localhost:8080/api/user/meId/'+id)
+  getUser():Observable<User>{
+    return this.http.get<User>('http://localhost:8080/api/user/me')
+  }
+  getTransfersMade():Observable<Transfer[]>{
+    return this.http.get<Transfer[]>('http://localhost:8080/api/user/transfers')
   }
 }
