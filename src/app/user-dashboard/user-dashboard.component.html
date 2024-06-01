@@ -1,25 +1,29 @@
-<mat-grid-list cols="2" rowHeight="1:1">
+<div class="body">
+  <mat-grid-list cols="2" rowHeight="1:1">
     <mat-grid-tile>
       <mat-card class="card">
         <mat-card-header>
           <h2 class="title">Welcome {{user.username}} to Transfer Money!</h2>
         </mat-card-header>
-        <h2  class="title">You have <span style="color: green;">${{user.moneyAccount}}</span> in the account.</h2>
-        <button class="cardButton transfer-button">Hacer una transferencia</button>
-        <button class="cardButton history-button">Ver historial de transferencias</button>
-        <button class="cardButton config-button">Configuración de cuenta</button>
+        <h2 class="title">You have <span style="color: green;">${{user.moneyAccount}}</span> in the account.</h2>
+        <div class="button-container">
+          <a href="/transfers" class="aClass transfer-a">Make a Transfer</a>
+          <a href="" class="aClass history-a">View Transfer History</a>
+          <a href="" class="aClass config-a">Account Settings</a>
+        </div>
+        
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
       <ul class="transfer-list">
-        <h2>Latest transfers made</h2>
+        <h2 class="section-title with-icon">Latest <i class="material-icons">swap_horiz</i> Transfers made</h2>
         <li *ngFor="let transfer of transfers" class="transfer-item">
           <mat-card class="card-transfer">
             <div class="transfer-details">
-              <span>CBU RECEIVED:</span> {{ transfer.recipientCbu }} 
+              <span>CBU Received:</span> {{ transfer.recipientCbu }} 
             </div>
             <div class="transfer-details">
-              <span>USER WHO TRANSFERRED:</span> {{ transfer.originUser }}
+              <span>User Who Transferred:</span> {{ transfer.originUser }}
             </div>
             <div class="transfer-details">
               <span>Amount:</span> <span class="transfer-amount">${{ transfer.transferAmount }}</span> 
@@ -32,3 +36,4 @@
       </ul>
     </mat-grid-tile>    
   </mat-grid-list>
+</div>

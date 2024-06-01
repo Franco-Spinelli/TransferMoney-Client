@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import { TransfersComponent } from './transfers/transfers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import {MatCardModule} from '@angular/material/card';
     NavBarComponent,
     RegisterComponent,
     FooterComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    TransfersComponent
   ],
   imports: [
     BrowserModule,
