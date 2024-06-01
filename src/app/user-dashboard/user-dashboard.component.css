@@ -1,132 +1,102 @@
 
-mat-grid-tile {
-    background: rgb(245, 245, 245);
- 
-  }
-  
-  .card {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    font-family: Roboto, sans-serif;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    border: 1px solid #ddd;
-  }
-  
- a{
-  text-decoration: none;
- }
-  
- .button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f7f7f7; 
 }
 
-.button-container .aClass {
-  flex: 1 1 50%;
-  margin: 10px 0;
-  padding: 20px; 
-  font-size: 1.2em; 
+.card-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff; 
+  border: 1px solid #ddd; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  margin-bottom: 20px;
+  background-color: #fff; 
+  border: 1px solid #ddd; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-weight: bold;
+  color: #313233; 
+}
+
+.amount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #337ab7; 
+}
+
+.button-container {
+  margin-top: 20px;
   text-align: center;
-  cursor: pointer;
-  text-transform: uppercase;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  background-color: #337ab7; 
+  color: #fff;
+  cursor: pointer;
 }
-.aClass{
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: rgb(224, 224, 224);
-  border: 1px solid #ddd;
- 
+a{
+  text-decoration: none;
 }
 
-.transfer-a{
-    color: #538f56;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 2px 1px rgb(197, 199, 197);
-    border-radius: 5px;
-}
-.transfer-a:hover {
-  box-shadow: 0 0 2px 1px rgb(92, 211, 94);
+.transfer-btn {
+  background-color: #337ab7; 
 }
 
-
-.history-a{
-    color: #e3b11a;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 2px 1px rgb(197, 199, 197);
-    border-radius: 5px;
-}
-.history-a:hover {
-  box-shadow: 0 0 2px 1px #e3b11a;
+.history-btn {
+  background-color: #666; 
 }
 
-.config-a {
-    color: rgb(66, 133, 244);
-    border: 1px solid #ddd;
-    box-shadow: 0 0 2px 1px rgb(197, 199, 197);
-    border-radius: 5px;
+.config-btn {
+  background-color: #999; 
 }
 
-.config-a:hover {
-  box-shadow: 0 0 2px 1px rgb(66, 133, 244);
+.transfer-list-container {
+  margin-top: 40px;
 }
 
 .transfer-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  max-width: 20rem;
+  margin: 0;
 }
 
 .transfer-item {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .card-transfer {
-  padding: 10px; 
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #fff; 
+  border: 1px solid #ddd; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .transfer-details {
-  margin-bottom: 5px; 
-}
-
-.transfer-details span {
-  font-weight: bold; 
+  padding: 20px;
 }
 
 .transfer-amount {
-  color: green; 
+  font-size: 18px;
+  font-weight: bold;
+  color: #337ab7; 
 }
 
 .transfer-date {
-  font-style: italic; 
+  font-size: 14px;
   color: #666; 
 }
 
-.section-title.with-icon {
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.section-title.with-icon i {
-  font-size: 1.5rem;
-  margin-left: 10px;
-  color: #777;
-}
 
