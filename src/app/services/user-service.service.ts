@@ -18,6 +18,9 @@ export class UserServiceService {
   getTransfersMade():Observable<Transfer[]>{
     return this.http.get<Transfer[]>(environment.urlApi +'/user/transfers');
   }
+  getTransfersReceived():Observable<Transfer[]>{
+    return this.http.get<Transfer[]>(environment.urlApi +'/user/receivedTransfers');
+  }
   postTransfer(data: CreateTransfer):Observable<any>{
     return this.http.post<any>(environment.urlApi + '/transfer/create',data);
   }

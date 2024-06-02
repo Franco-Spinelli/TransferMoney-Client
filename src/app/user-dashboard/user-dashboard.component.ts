@@ -19,6 +19,7 @@ export class UserDashboardComponent {
     })
     userService.getTransfersMade().subscribe((data)=>{
       this.transfers=data;
+      this.transfers=this.transfers.reverse();
       console.log(this.transfers)
     })
   }

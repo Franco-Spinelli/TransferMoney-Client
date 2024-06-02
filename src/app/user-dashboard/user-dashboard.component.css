@@ -22,7 +22,7 @@
 }
 
 .title {
-  font-weight: bold;
+  
   color: #313233; 
 }
 
@@ -91,7 +91,7 @@ a{
 .transfer-amount {
   font-size: 18px;
   font-weight: bold;
-  color: #337ab7; 
+  color: red; 
 }
 
 .transfer-date {

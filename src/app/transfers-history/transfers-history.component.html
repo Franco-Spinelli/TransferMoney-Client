@@ -1,0 +1,69 @@
+<div class="body">
+    <div class="transfer-list-container">
+        <mat-card class="card">
+        <mat-card-header>
+            <h2 class="title">All Transfers made</h2>
+            <i class="material-icons">swap_horiz</i>
+        </mat-card-header>
+        <mat-card-content>
+            <ul class="transfer-list">
+            <li *ngFor="let transfer of  transfersMade" class="transfer-item">
+                <mat-card class="card-transfer">
+                    <div class="transfer-details">
+                        <p>
+                            <span class="label">User Received:</span> <span class="value">{{ transfer.recipientUser }}</span>
+                        </p>
+                        <p>
+                            <span class="label">CBU Received:</span> <span class="value">{{ transfer.recipientCbu }}</span>
+                        </p>
+                        <p>
+                            <span class="label">User Who Transferred:</span> <span class="value">{{ transfer.originUser }}</span>
+                        </p>
+                        <p>
+                            <span class="label">Amount:</span> <span class="value transfer-amount" style="color: red;">-${{ transfer.transferAmount }}</span>
+                        </p>
+                        <p>
+                            <span class="label">Date:</span> <span class="value transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span>
+                        </p>
+                    </div>
+                </mat-card>
+            </li>
+            </ul>
+            <p *ngIf="transfersMade.length === 0">No transfers made yet.</p>
+        </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-card-header>
+                <h2 class="title">All Transfers received</h2>
+                <i class="material-icons">swap_horiz</i>
+            </mat-card-header>
+            <mat-card-content>
+                <ul class="transfer-list">
+                <li *ngFor="let transfer of  transfersReceived " class="transfer-item">
+                    <mat-card class="card-transfer">
+                        <div class="transfer-details">
+                            <p>
+                                <span class="label">User Received:</span> <span class="value">{{ transfer.recipientUser }}</span>
+                            </p>
+                            <p>
+                                <span class="label">CBU Received:</span> <span class="value">{{ transfer.recipientCbu }}</span>
+                            </p>
+                            <p>
+                                <span class="label">User Who Transferred:</span> <span class="value">{{ transfer.originUser }}</span>
+                            </p>
+                            <p>
+                                <span class="label">Amount:</span> <span class="value transfer-amount" >+${{ transfer.transferAmount }}</span>
+                            </p>
+                            <p>
+                                <span class="label">Date:</span> <span class="value transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span>
+                            </p>
+                        </div>
+                    </mat-card>
+                </li>
+                </ul>
+                <p *ngIf="transfersReceived.length === 0">No transfers received yet.</p>
+            </mat-card-content>
+            </mat-card>
+    </div>
+</div>

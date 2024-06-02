@@ -20,6 +20,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { TransfersComponent } from './transfers/transfers.component';
+import { TransfersHistoryComponent } from './transfers-history/transfers-history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { TransfersComponent } from './transfers/transfers.component';
     RegisterComponent,
     FooterComponent,
     UserDashboardComponent,
-    TransfersComponent
+    TransfersComponent,
+    TransfersHistoryComponent
   ],
   imports: [
     BrowserModule,

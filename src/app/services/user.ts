@@ -5,7 +5,7 @@ export interface User {
     password: string;
     firstname?: string;
     lastname?: string;
-    dni: number;
-    cbu?: bigint;
+    dni: string;
+    cbu?: string;
     moneyAccount: number;
   }

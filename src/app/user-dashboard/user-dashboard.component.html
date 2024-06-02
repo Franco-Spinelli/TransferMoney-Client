@@ -2,14 +2,14 @@
   <div class="card-container">
     <mat-card class="card">
       <mat-card-header>
-        <h2 class="title">Welcome {{ user.username }} to Transfer Money!</h2>
+        <h2 class="title">Welcome <span style="font-weight: bold;">{{ user.username }}</span> to Transfer Money!</h2>
       </mat-card-header>
       <mat-card-content>
         <h2 class="title">You have <span class="amount">${{ user.moneyAccount }}</span> in the account.</h2>
+        <h3>Your CBU: <span  style="font-weight: bold;">{{user.cbu}}</span></h3>
         <div class="button-container">
           <a href="/transfers" class="btn transfer-btn">Make a Transfer</a>
-          <a href="" class="btn history-btn">View Transfer History</a>
-          <a href="" class="btn config-btn">Account Settings</a>
+          <a href="/transfers-history" class="btn history-btn">View Transfer History</a>
         </div>
       </mat-card-content>
     </mat-card>
@@ -22,7 +22,7 @@
       </mat-card-header>
       <mat-card-content>
         <ul class="transfer-list">
-          <li *ngFor="let transfer of transfers |  slice:-3" class="transfer-item">
+          <li *ngFor="let transfer of transfers | slice:0:3 " class="transfer-item">
             <mat-card class="card-transfer">
               <div class="transfer-details">
                 <p>
@@ -36,16 +36,17 @@
                 </p>
                 <p>
                   <span>Amount:</span>
-                  <span class="transfer-amount">${{ transfer.transferAmount }}</span>
+                  <span class="transfer-amount">-${{ transfer.transferAmount }}</span>
                 </p>
                 <p>
                   <span>Date:</span>
-                  <span class="transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy' }}</span>
+                  <span class="transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span>
                 </p>
               </div>
             </mat-card>
           </li>
         </ul>
+        <p *ngIf="transfers.length === 0">No transfers made yet.</p>
       </mat-card-content>
     </mat-card>
   </div>
