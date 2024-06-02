@@ -22,9 +22,12 @@
       </mat-card-header>
       <mat-card-content>
         <ul class="transfer-list">
-          <li *ngFor="let transfer of transfers" class="transfer-item">
+          <li *ngFor="let transfer of transfers |  slice:-4" class="transfer-item">
             <mat-card class="card-transfer">
               <div class="transfer-details">
+                <p>
+                  <span>User Received:</span> {{ transfer.recipientUser }}
+                </p>
                 <p>
                   <span>CBU Received:</span> {{ transfer.recipientCbu }}
                 </p>

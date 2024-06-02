@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Transfer } from './transfer';
+import { CreateTransfer } from './createTransfer';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,12 @@ export class UserServiceService {
 
   constructor(private http:HttpClient) { }
   getUser():Observable<User>{
-    return this.http.get<User>('http://localhost:8080/api/user/me')
+    return this.http.get<User>(environment.urlApi + '/user/me');
   }
   getTransfersMade():Observable<Transfer[]>{
-    return this.http.get<Transfer[]>('http://localhost:8080/api/user/transfers')
+    return this.http.get<Transfer[]>(environment.urlApi +'/user/transfers');
+  }
+  postTransfer(data: CreateTransfer):Observable<any>{
+    return this.http.post<any>(environment.urlApi + '/transfer/create',data);
   }
 }

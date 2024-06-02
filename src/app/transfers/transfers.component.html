@@ -1,1 +1,5 @@
-<p>transfers workls!</p>
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="recipient" required>
+    <input type="number" formControlName="transferAmount" required placeholder="Amount">
+    <button type="submit">Enviar</button>
+  </form>
