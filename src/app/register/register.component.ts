@@ -13,12 +13,12 @@ export class RegisterComponent {
   registerForm: FormGroup ;
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router){
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username:['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required,Validators.minLength(6)]],
       mail: ['', [Validators.required, Validators.email]],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      dni: ['', Validators.required]
+      dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]]
     });
   }
 

@@ -1,5 +1,13 @@
 <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="recipient" required>
-    <input type="number" formControlName="transferAmount" required placeholder="Amount">
-    <button type="submit">Enviar</button>
-  </form>
+  <input type="text" formControlName="recipient" required placeholder="Recipient username or CBU">
+  <div *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
+    <span class="error">Please enter a valid recipient</span>
+  </div>
+  
+  <input type="number" formControlName="transferAmount" required placeholder="Amount">
+  <div *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
+    <span class="error">The minimum to transfer is $100</span>
+  </div>
+  
+  <button type="submit">Enviar</button>
+</form>

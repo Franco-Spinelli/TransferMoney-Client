@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from '../services/user-service.service';
-import { Transfer } from '../services/transfer';
+
 import { CreateTransfer } from '../services/createTransfer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transfers',
@@ -11,9 +12,9 @@ import { CreateTransfer } from '../services/createTransfer';
 })
 export class TransfersComponent {
   transferForm: FormGroup;
-  constructor(private fb: FormBuilder,private userServie: UserServiceService){
+  constructor(private fb: FormBuilder,private userServie: UserServiceService, private router: Router){
     this.transferForm = this.fb.group({
-      recipient: ['', Validators.required],
+      recipient: ['', [Validators.required, Validators.minLength(4)]],
       transferAmount: [0, [Validators.required, Validators.min(100)]]
     });
   }
@@ -33,10 +34,11 @@ export class TransfersComponent {
 
       this.userServie.postTransfer(transferDTO).subscribe((data)=>{
         alert("Transfer success!");
+        this.router.navigateByUrl("/user-dashboard")
       
       }  ,(error)=>{
         console.log(transferDTO);
-          alert("error unexpected!")
+          alert("error unexpected! Please check the recipient data or your balance!")
       })
       
     } else {

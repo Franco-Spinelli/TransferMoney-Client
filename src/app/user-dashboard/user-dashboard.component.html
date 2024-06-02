@@ -17,12 +17,12 @@
   <div class="transfer-list-container">
     <mat-card class="card">
       <mat-card-header>
-        <h2 class="title">Latest Transfers</h2>
+        <h2 class="title">Latest Transfers made</h2>
         <i class="material-icons">swap_horiz</i>
       </mat-card-header>
       <mat-card-content>
         <ul class="transfer-list">
-          <li *ngFor="let transfer of transfers |  slice:-4" class="transfer-item">
+          <li *ngFor="let transfer of transfers |  slice:-3" class="transfer-item">
             <mat-card class="card-transfer">
               <div class="transfer-details">
                 <p>
