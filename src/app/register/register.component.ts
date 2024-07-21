@@ -15,7 +15,7 @@ export class RegisterComponent {
     this.registerForm = this.formBuilder.group({
       username:['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required,Validators.minLength(6)]],
-      mail: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]]
