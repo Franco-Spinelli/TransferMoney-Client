@@ -25,7 +25,6 @@ export class LoginComponent {
   }
   login() {
     this.loginService.login(this.loginForm.value as LoginRequest).subscribe((data) => {
-      console.log(data);
       this.router.navigateByUrl("/user-dashboard")
       
     },

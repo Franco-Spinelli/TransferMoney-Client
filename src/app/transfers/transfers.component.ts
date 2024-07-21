@@ -37,7 +37,6 @@ export class TransfersComponent {
         this.router.navigateByUrl("/user-dashboard")
       
       }  ,(error)=>{
-        console.log(transferDTO);
           alert("error unexpected! Please check the recipient data or your balance!")
       })
       

@@ -14,12 +14,10 @@ export class TransfersHistoryComponent {
     userService.getTransfersMade().subscribe((data)=>{
       this.transfersMade=data;
       this.transfersMade=this.transfersMade.reverse();
-      console.log(this.transfersMade)
     })
     userService.getTransfersReceived().subscribe((data)=>{
       this.transfersReceived=data;
       this.transfersReceived=this.transfersReceived.reverse();
-      console.log(this.transfersMade)
     })
   }
   

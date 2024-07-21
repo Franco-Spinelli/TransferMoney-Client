@@ -14,13 +14,10 @@ export class UserDashboardComponent {
   constructor(userService: UserServiceService){
     userService.getUser().subscribe((data)=>{
       this.user = data;
-      console.log(data);
-      
     })
     userService.getTransfersMade().subscribe((data)=>{
       this.transfers=data;
       this.transfers=this.transfers.reverse();
-      console.log(this.transfers)
     })
   }
 }
