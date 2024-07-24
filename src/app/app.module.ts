@@ -21,6 +21,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { TransfersComponent } from './transfers/transfers.component';
 import { TransfersHistoryComponent } from './transfers-history/transfers-history.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { TransfersHistoryComponent } from './transfers-history/transfers-history
     FooterComponent,
     UserDashboardComponent,
     TransfersComponent,
-    TransfersHistoryComponent
+    TransfersHistoryComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
