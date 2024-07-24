@@ -24,4 +24,7 @@ export class UserServiceService {
   postTransfer(data: CreateTransfer):Observable<any>{
     return this.http.post<any>(environment.urlApi + '/transfer/create',data);
   }
+  deposit(amount:any):Observable<any>{
+    return this.http.put<any>(environment.urlApi + '/user/deposit', amount)
+  }
 }

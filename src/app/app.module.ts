@@ -22,6 +22,7 @@ import {MatCardModule} from '@angular/material/card';
 import { TransfersComponent } from './transfers/transfers.component';
 import { TransfersHistoryComponent } from './transfers-history/transfers-history.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AddMoneyComponent } from './add-money/add-money.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     UserDashboardComponent,
     TransfersComponent,
     TransfersHistoryComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    AddMoneyComponent
   ],
   imports: [
     BrowserModule,
