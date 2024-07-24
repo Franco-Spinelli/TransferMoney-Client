@@ -1,7 +1,7 @@
 <form [formGroup]="moneyForm" (ngSubmit)="onSubmit()">
-    <label for="transferAmount">Amount to deposit:</label>
-    <input type="number" formControlName="moneyToDeposit" required placeholder="Amount to transfer">
-    <div *ngIf="moneyForm.get('transferAmount')?.invalid && (moneyForm.get('transferAmount')?.dirty || moneyForm.get('transferAmount')?.touched)">
+    <label for="moneyToDeposit">Amount to deposit:</label>
+    <input type="number" formControlName="moneyToDeposit" required placeholder="Amount to deposit">
+    <div *ngIf="moneyForm.get('moneyToDeposit')?.invalid && (moneyForm.get('moneyToDeposit')?.dirty || moneyForm.get('moneyToDeposit')?.touched)">
       <span class="error">The minimum to deposit is $100</span>
     </div>
     <button type="submit">Send</button>

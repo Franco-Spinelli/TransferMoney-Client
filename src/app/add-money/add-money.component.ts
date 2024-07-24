@@ -19,7 +19,8 @@ export class AddMoneyComponent {
     if (this.moneyForm.valid) {
       const formValue = this.moneyForm.value;
       const depositDTO: any = {
-        moneyToDeposit: formValue.moneyToDeposit
+        moneyToDeposit: formValue.moneyToDeposit,
+        date: null
       };
       this.userService.deposit(depositDTO).subscribe((data)=>{
         alert("Deposit success!");
