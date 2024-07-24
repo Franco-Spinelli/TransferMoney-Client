@@ -17,7 +17,7 @@ export class LoginService {
     this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("token")||"");
    }
    login(credentials: LoginRequest):Observable<any>{
-    return this.http.post<any>(environment.urlHost + "auth/login",credentials).pipe(
+    return this.http.post<any>(environment.urlHost + "/auth/login",credentials).pipe(
       tap((userData)=>{
         sessionStorage.setItem("token",userData.token);
         this.currentUserData.next(userData.token);
@@ -28,7 +28,7 @@ export class LoginService {
     )
    }
    register(credentials: RegisterRequest):Observable<any>{
-    return this.http.post<any>(environment.urlHost + "auth/register",credentials).pipe(
+    return this.http.post<any>(environment.urlHost + "/auth/register",credentials).pipe(
       tap((userData)=>{
         sessionStorage.setItem("token",userData.token);
         this.currentUserData.next(userData.token);
