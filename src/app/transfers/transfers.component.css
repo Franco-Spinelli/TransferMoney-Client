@@ -1,3 +1,9 @@
+.container{
+  position: relative;
+  max-width: 500px; 
+  margin: 50px auto; 
+  padding: 50px; 
+}
 form {
     max-width: 500px;
     margin: 40px auto;
@@ -33,6 +39,7 @@ form {
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 1rem;
   }
   
   button[type="submit"]:hover {
@@ -43,4 +50,8 @@ form {
     color: red;
     font-size: 14px;
     margin-bottom: 10px;
+  }
+  app-loading-circle {
+    position: relative; 
+    left: 47%; 
   }
