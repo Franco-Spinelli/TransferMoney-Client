@@ -23,6 +23,7 @@ import { TransfersComponent } from './transfers/transfers.component';
 import { TransfersHistoryComponent } from './transfers-history/transfers-history.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddMoneyComponent } from './add-money/add-money.component';
+import { LoadingCircleComponent } from './loading-circle/loading-circle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { AddMoneyComponent } from './add-money/add-money.component';
     TransfersComponent,
     TransfersHistoryComponent,
     LandingPageComponent,
-    AddMoneyComponent
+    AddMoneyComponent,
+    LoadingCircleComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { AddMoneyComponent } from './add-money/add-money.component';
   providers: [
     provideAnimationsAsync(),
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},
-    {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptorService,multi:true}
+    {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptorService,multi:true},
+    LoadingCircleComponent
   ],
   bootstrap: [AppComponent]
 })

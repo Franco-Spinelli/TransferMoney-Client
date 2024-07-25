@@ -1,5 +1,6 @@
 
 .login-container {
+    position: relative;
     max-width: 450px;
     margin: 0 auto;
     margin-top: 6%;
@@ -61,4 +62,8 @@
   
   .login-container button[type="submit"]:hover {
     background-color: rgb(68, 112, 69);
+  }
+  app-loading-circle {
+    position: relative; 
+    left: 46%; 
   }

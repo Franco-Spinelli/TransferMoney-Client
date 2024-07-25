@@ -27,5 +27,7 @@
       </div>
       <button type="submit" [disabled]="!registerForm.valid">Register</button>
       <p>Do you have an account? <a href="/login">Log in here</a>.</p>
+      <app-loading-circle *ngIf="isLoading"></app-loading-circle>
     </form>
+  
 </div>

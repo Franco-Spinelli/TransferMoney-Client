@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { LoginService } from '../auth/login.service';
 import { LoginRequest } from '../auth/loginRequest';
 import { Router } from '@angular/router';
+import { LoadingCircleComponent } from '../loading-circle/loading-circle.component';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
+  isLoading = false;
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private loadingCircle: LoadingCircleComponent
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
@@ -24,12 +26,17 @@ export class LoginComponent {
     });
   }
   login() {
+    this.isLoading = true;
+    this.loadingCircle.startLoading();
     this.loginService.login(this.loginForm.value as LoginRequest).subscribe((data) => {
       this.router.navigateByUrl("/user-dashboard")
-      
+      this.isLoading = false;
+      this.loadingCircle.stopLoading();
     },
     (error) => {
       alert("Username or password incorrect")
+      this.isLoading = false;
+      this.loadingCircle.stopLoading();
     })
   }
 }
