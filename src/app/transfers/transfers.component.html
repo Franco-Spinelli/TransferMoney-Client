@@ -1,15 +1,28 @@
 <div class="container">
-  <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="recipient" required placeholder="Recipient username or CBU">
-    <div *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
-      <span class="error">Please enter a valid recipient</span>
+  <div class="grid-container">
+    <div class="form-column">
+      <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="recipient" required placeholder="Recipient username or CBU">
+        <div *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
+          <span class="error">Please enter a valid recipient</span>
+        </div>
+        <label for="transferAmount">Amount to transfer:</label>
+        <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
+        <div *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
+          <span class="error">The minimum to transfer is $100</span>
+        </div>
+        <button type="submit">Transfer</button>
+      </form>
+      <app-loading-circle *ngIf="isLoading"></app-loading-circle>
     </div>
-    <label for="transferAmount">Amount to transfer:</label>
-    <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
-    <div *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
-      <span class="error">The minimum to transfer is $100</span>
-    </div>
-    <button type="submit">Transfer</button>
-    <app-loading-circle *ngIf="isLoading"></app-loading-circle>
-  </form> 
+    <div class="info-column">
+      <h2>Additional Information</h2>
+      <h3>Fees</h3>
+      <p>Transfers between Tran$ferMoney accounts are free. For transfers to other institutions, fees apply based on the amount and destination.</p>
+      <h3>Processing Times</h3>
+      <p>Transfers are processed immediately. Funds will be available in the recipient's account on the same business day.</p>
+      <h3>Policies</h3>
+      <p>Check our terms and conditions to learn the full policies regarding money transfers.</p>
+    </div>    
+  </div>
 </div>
