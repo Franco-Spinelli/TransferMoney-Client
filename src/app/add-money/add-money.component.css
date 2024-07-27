@@ -7,7 +7,20 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
+  .deposit-container {
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+  }
   
+  .deposit-container h2 {
+    color: #2c3e50;
+  }
+  
+  .deposit-container p {
+    color: #555;
+    margin-bottom: 20px;
+  }
   input[type="text"], input[type="number"] {
     width: 95%;
     height: 40px;

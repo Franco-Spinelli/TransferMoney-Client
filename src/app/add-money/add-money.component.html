@@ -1,4 +1,12 @@
-<form [formGroup]="moneyForm" (ngSubmit)="onSubmit()">
+<div class="deposit-container">
+  <h2>Add Money to Your Account</h2>
+  <p>
+    This form allows you to add fictitious money to your account for testing purposes. 
+    Use this feature to simulate deposits and test the functionality of the application 
+    without affecting real funds.
+  </p>
+  
+  <form [formGroup]="moneyForm" (ngSubmit)="onSubmit()">
     <label for="moneyToDeposit">Amount to deposit:</label>
     <input type="number" formControlName="moneyToDeposit" required placeholder="Amount to deposit">
     <div *ngIf="moneyForm.get('moneyToDeposit')?.invalid && (moneyForm.get('moneyToDeposit')?.dirty || moneyForm.get('moneyToDeposit')?.touched)">
@@ -6,3 +14,4 @@
     </div>
     <button type="submit">Send</button>
   </form>
+</div>
