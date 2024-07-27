@@ -75,6 +75,7 @@
 
 .transfer-list-container {
   margin-top: 40px;
+  margin-bottom: 2rem;
 }
 
 .transfer-list {
@@ -116,4 +117,13 @@
 .transfer-date {
   font-size: 14px;
   color: #777;
+}
+@media (max-width: 768px) {
+  .transfer-list {
+    flex-direction: column; 
+  }
+
+  .transfer-item {
+    margin: 10px 0; 
+  }
 }
