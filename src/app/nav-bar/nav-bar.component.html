@@ -1,4 +1,4 @@
-<div *ngIf="isLoggedIn">
+<div *ngIf="!isLoggedIn">
   <mat-toolbar>
       <mat-toolbar-row>
         <a href="/">Tran$fer Money</a>
@@ -12,7 +12,7 @@
   </mat-toolbar>
 </div>  
 
-<div *ngIf="!isLoggedIn">
+<div *ngIf="isLoggedIn">
   <mat-toolbar>
       <mat-toolbar-row>
           <a href="/user-dashboard">Tran$fer Money</a>
