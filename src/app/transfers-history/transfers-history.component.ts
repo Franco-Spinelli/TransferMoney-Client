@@ -38,4 +38,14 @@ export class TransfersHistoryComponent {
     return Math.ceil(this.transfersMade.length / this.productsPerPage);
   }
   
+  get paginatedTransfersMade() {
+    const startIndex = (this.currentPage - 1) * this.productsPerPage;
+    const endIndex = startIndex + this.productsPerPage;
+    return this.transfersMade.slice(startIndex, endIndex);
+  }
+  get paginatedTransfersReceived() {
+    const startIndex = (this.currentPage - 1) * this.productsPerPage;
+    const endIndex = startIndex + this.productsPerPage;
+    return this.transfersReceived.slice(startIndex, endIndex);
+  }
 }
