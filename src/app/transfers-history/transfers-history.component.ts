@@ -12,7 +12,7 @@ export class TransfersHistoryComponent {
   transfersReceived: Transfer[];
    //page
   currentPage = 1;
-  productsPerPage = 10;
+  productsPerPage = 6;
   constructor(userService: UserServiceService){
     userService.getTransfersMade().subscribe((data)=>{
       this.transfersMade=data;
