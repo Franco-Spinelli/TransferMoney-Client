@@ -11,8 +11,10 @@ export class TransfersHistoryComponent {
   transfersMade: Transfer[];
   transfersReceived: Transfer[];
    //page
-  currentPage = 1;
-  productsPerPage = 6;
+  currentPageMade = 1;
+  productsPerPageMade = 6;
+  currentPageReceived = 1;
+  productsPerPageReceived  = 6;
   constructor(userService: UserServiceService){
     userService.getTransfersMade().subscribe((data)=>{
       this.transfersMade=data;
@@ -23,29 +25,37 @@ export class TransfersHistoryComponent {
       this.transfersReceived=this.transfersReceived.reverse();
     })
   }
-  previousPage() {
-    this.currentPage--;
+  previousPageMade() {
+    this.currentPageMade--;
   }
  
-  nextPage() {
-    this.currentPage++;
+  nextPageMade() {
+    this.currentPageMade++;
   }
+  previousPageReceived() {
+    this.currentPageReceived--;
+  }
+ 
+  nextPageReceived() {
+    this.currentPageReceived++;
+  }
+ 
  
   get totalPagesReceived() {
-    return Math.ceil(this.transfersReceived.length / this.productsPerPage);
+    return Math.ceil(this.transfersReceived.length / this.productsPerPageReceived);
   }
   get totalPagesMade() {
-    return Math.ceil(this.transfersMade.length / this.productsPerPage);
+    return Math.ceil(this.transfersMade.length / this.productsPerPageMade);
   }
   
   get paginatedTransfersMade() {
-    const startIndex = (this.currentPage - 1) * this.productsPerPage;
-    const endIndex = startIndex + this.productsPerPage;
+    const startIndex = (this.currentPageMade - 1) * this.productsPerPageMade;
+    const endIndex = startIndex + this.productsPerPageMade;
     return this.transfersMade.slice(startIndex, endIndex);
   }
   get paginatedTransfersReceived() {
-    const startIndex = (this.currentPage - 1) * this.productsPerPage;
-    const endIndex = startIndex + this.productsPerPage;
+    const startIndex = (this.currentPageReceived - 1) * this.productsPerPageReceived;
+    const endIndex = startIndex + this.productsPerPageReceived;
     return this.transfersReceived.slice(startIndex, endIndex);
   }
 }
