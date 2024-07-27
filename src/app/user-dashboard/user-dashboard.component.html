@@ -2,51 +2,40 @@
   <div class="card-container">
     <mat-card class="card">
       <mat-card-header>
-        <h2 class="title">Welcome <span style="font-weight: bold;">{{ user.username }}</span> to Transfer Money!</h2>
+        <h2 class="title">Welcome <span class="username">{{ user.username }}</span> to Transfer Money!</h2>
       </mat-card-header>
       <mat-card-content>
-        <h2 class="title">You have <span class="amount">${{ user.moneyAccount }}</span> in the account.</h2>
-        <h3>Your CBU: <span  style="font-weight: bold;">{{user.cbu}}</span></h3>
+        <h2 class="title">You have <span class="amount">${{ user.moneyAccount }}</span> in your account.</h2>
+        <h3>Your CBU: <span class="cbu">{{ user.cbu }}</span></h3>
         <div class="button-container">
           <a href="/transfers" class="btn transfer-btn">Make a Transfer</a>
           <a href="/transfers-history" class="btn history-btn">View Transfer History</a>
-          <a href="/add-money">Add money to test</a>
+          <a href="/add-money" class="btn config-btn">Add Money</a>
         </div>
       </mat-card-content>
     </mat-card>
   </div>
+  
   <div class="transfer-list-container">
     <mat-card class="card">
       <mat-card-header>
-        <h2 class="title">Latest Transfers made</h2>
+        <h2 class="title">Latest Transfers Made</h2>
         <i class="material-icons">swap_horiz</i>
       </mat-card-header>
       <mat-card-content>
-        <ul class="transfer-list">
-          <li *ngFor="let transfer of transfers | slice:0:3 " class="transfer-item">
+        <div class="transfer-list">
+          <div *ngFor="let transfer of transfers | slice:0:3" class="transfer-item">
             <mat-card class="card-transfer">
               <div class="transfer-details">
-                <p>
-                  <span>User Received:</span> {{ transfer.recipientUser }}
-                </p>
-                <p>
-                  <span>CBU Received:</span> {{ transfer.recipientCbu }}
-                </p>
-                <p>
-                  <span>User Who Transferred:</span> {{ transfer.originUser }}
-                </p>
-                <p>
-                  <span>Amount:</span>
-                  <span class="transfer-amount">-${{ transfer.transferAmount }}</span>
-                </p>
-                <p>
-                  <span>Date:</span>
-                  <span class="transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span>
-                </p>
+                <p><span>User Received:</span> {{ transfer.recipientUser }}</p>
+                <p><span>CBU Received:</span> {{ transfer.recipientCbu }}</p>
+                <p><span>User Who Transferred:</span> {{ transfer.originUser }}</p>
+                <p><span>Amount:</span> <span class="transfer-amount">-${{ transfer.transferAmount }}</span></p>
+                <p><span>Date:</span> <span class="transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span></p>
               </div>
             </mat-card>
-          </li>
-        </ul>
+          </div>
+        </div>
         <p *ngIf="transfers.length === 0">No transfers made yet.</p>
       </mat-card-content>
     </mat-card>
