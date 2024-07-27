@@ -1,7 +1,6 @@
 .body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 20px;
-  background-color: #f7f9fc;
   color: #333;
 }
 
@@ -79,13 +78,16 @@
 }
 
 .transfer-list {
+  display: flex;
+  justify-content: space-between; 
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .transfer-item {
-  margin-bottom: 20px;
+  flex: 1;
+  margin: 0 10px;
 }
 
 .card-transfer {
@@ -94,6 +96,7 @@
   border: none;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 100%; 
 }
 
 .transfer-details {
