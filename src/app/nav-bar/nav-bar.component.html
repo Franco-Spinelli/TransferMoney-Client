@@ -1,4 +1,4 @@
-<div *ngIf="!isLoggedIn">
+<div *ngIf="isLoggedIn">
   <mat-toolbar>
       <mat-toolbar-row>
         <a href="/">Tran$fer Money</a>
@@ -12,11 +12,15 @@
   </mat-toolbar>
 </div>  
 
-<div *ngIf=" isLoggedIn">
+<div *ngIf="!isLoggedIn">
   <mat-toolbar>
       <mat-toolbar-row>
           <a href="/user-dashboard">Tran$fer Money</a>
           <span class="example-spacer"></span>
+          <button mat-button [routerLink]="['/user-dashboard']" class="dashboard-button">
+            Home
+            <mat-icon>house</mat-icon>
+          </button>
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
               <mat-icon>more_vert</mat-icon>
             </button>
