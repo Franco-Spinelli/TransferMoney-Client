@@ -31,6 +31,11 @@
             </ul>
             <p *ngIf="transfersMade.length === 0">No transfers made yet.</p>
         </mat-card-content>
+             <div class="pagination">
+                <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+                <span>{{ currentPage }} of {{ totalPagesMade }}</span>
+                <button (click)="nextPage()" [disabled]="currentPage === totalPagesMade">Next</button>
+            </div>
         </mat-card>
 
         <mat-card class="card">
@@ -64,6 +69,11 @@
                 </ul>
                 <p *ngIf="transfersReceived.length === 0">No transfers received yet.</p>
             </mat-card-content>
+            <div class="pagination">
+                <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+                <span>{{ currentPage }} of {{ totalPagesReceived }}</span>
+                <button (click)="nextPage()" [disabled]="currentPage === totalPagesReceived">Next</button>
+            </div>
             </mat-card>
     </div>
 </div>

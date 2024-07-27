@@ -16,7 +16,7 @@ const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard]},
   {path:'transfers', component: TransfersComponent, canActivate: [AuthGuard]},
-  {path:'transfers-history', component: TransfersHistoryComponent, canActivate: [AuthGuard]},
+  {path:'transfers-history', component: TransfersHistoryComponent},
   {path:'add-money', component: AddMoneyComponent, canActivate: [AuthGuard]},
   {path:'', component: LandingPageComponent}
 ];

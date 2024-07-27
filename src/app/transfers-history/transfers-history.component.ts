@@ -10,6 +10,9 @@ import { UserServiceService } from '../services/user-service.service';
 export class TransfersHistoryComponent {
   transfersMade: Transfer[];
   transfersReceived: Transfer[];
+   //page
+  currentPage = 1;
+  productsPerPage = 10;
   constructor(userService: UserServiceService){
     userService.getTransfersMade().subscribe((data)=>{
       this.transfersMade=data;
@@ -19,6 +22,20 @@ export class TransfersHistoryComponent {
       this.transfersReceived=data;
       this.transfersReceived=this.transfersReceived.reverse();
     })
+  }
+  previousPage() {
+    this.currentPage--;
+  }
+ 
+  nextPage() {
+    this.currentPage++;
+  }
+ 
+  get totalPagesReceived() {
+    return Math.ceil(this.transfersReceived.length / this.productsPerPage);
+  }
+  get totalPagesMade() {
+    return Math.ceil(this.transfersMade.length / this.productsPerPage);
   }
   
 }
