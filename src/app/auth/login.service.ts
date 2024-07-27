@@ -64,7 +64,6 @@ export class LoginService {
   }
 
   public isUserLoggedIn(): boolean{
-    if(this.userToken == "") return false;
-    return true;
+    return this.currentLoginOn.value;;
   }
 }
