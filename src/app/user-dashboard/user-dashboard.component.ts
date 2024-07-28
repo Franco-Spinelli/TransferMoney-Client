@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UserServiceService } from '../services/user-service.service';
 import { User } from '../services/user';
 import { Transfer } from '../services/transfer';
+import {Clipboard} from '@angular/cdk/clipboard'
 
 @Component({
   selector: 'app-user-dashboard',
@@ -9,6 +10,7 @@ import { Transfer } from '../services/transfer';
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
+  private clipboard = inject(Clipboard)
   user: User;
   transfers: Transfer[];
   constructor(userService: UserServiceService){
@@ -19,5 +21,9 @@ export class UserDashboardComponent {
       this.transfers=data;
       this.transfers=this.transfers.reverse();
     })
+  }
+  copyText(){
+    this.clipboard.copy(this.user.cbu ?? '');
+    alert("Copy succesful!")
   }
 }

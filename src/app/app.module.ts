@@ -24,6 +24,7 @@ import { TransfersHistoryComponent } from './transfers-history/transfers-history
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddMoneyComponent } from './add-money/add-money.component';
 import { LoadingCircleComponent } from './loading-circle/loading-circle.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { LoadingCircleComponent } from './loading-circle/loading-circle.componen
     MatToolbarModule,
     MatMenuModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    ClipboardModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -6,7 +6,12 @@
       </mat-card-header>
       <mat-card-content>
         <h2 class="title">You have <span class="amount">${{ user.moneyAccount }}</span> in your account.</h2>
-        <h3>Your CBU: <span class="cbu">{{ user.cbu }}</span></h3>
+        <h3>Your CBU: 
+          <span class="cbu">{{ user.cbu }}</span>
+          <button (click)="copyText()" aria-label="Copy to clipboard" class="clipboard">
+            <i class="material-icons">content_copy</i>
+          </button>
+        </h3>
         <div class="button-container">
           <a href="/transfers" class="btn transfer-btn">Make a Transfer</a>
           <a href="/transfers-history" class="btn history-btn">View Transfer History</a>

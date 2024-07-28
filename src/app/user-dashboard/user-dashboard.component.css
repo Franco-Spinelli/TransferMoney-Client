@@ -118,6 +118,15 @@
   font-size: 14px;
   color: #777;
 }
+.clipboard {
+  background: none; 
+  border: none; 
+  color: inherit; 
+  padding: 0; 
+  font: inherit; 
+  cursor: pointer; 
+  text-align: left; 
+}
 @media (max-width: 768px) {
   .transfer-list {
     flex-direction: column; 
