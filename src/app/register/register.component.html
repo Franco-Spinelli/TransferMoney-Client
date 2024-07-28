@@ -1,6 +1,7 @@
 <div class="registerContainer">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <h1>Transfer Money App</h1>
+      <h1>Register</h1>
+      <h3>Enter your details to create a new account.</h3>
       <label for="username">Username</label>
       <input type="text" id="username" formControlName="username" placeholder="Username">
       <div *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)">
@@ -26,7 +27,7 @@
         <span class="error"> DNI must be exactly 8 digits long </span>
       </div>
       <button type="submit" [disabled]="!registerForm.valid">Register</button>
-      <p>Do you have an account? <a href="/login">Log in here</a>.</p>
+      <span class="link"><p>Do you have an account? <a href="/login">Log in here</a>.</p></span>
       <app-loading-circle *ngIf="isLoading"></app-loading-circle>
     </form>
   

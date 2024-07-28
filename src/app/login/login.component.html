@@ -2,12 +2,13 @@
   <div class="login-container">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <h1>Login</h1>
+      <h3>Enter your username and password to access your account.</h3>
       <label for="username">Username</label>
       <input formControlName="username" placeholder="Username" required />
       <label for="password">Password</label>
       <input type="password" formControlName="password" placeholder="Password" required />
       <button type="submit">Login</button>
-      <p>Don't have an account? <a href="/register">Register here</a>.</p>
+      <span class="link"><p>Don't have an account? <a href="/register">Register here</a>.</p></span>
     </form>
     <app-loading-circle *ngIf="isLoading"></app-loading-circle>
   </div>
