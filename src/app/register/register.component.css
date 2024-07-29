@@ -50,19 +50,20 @@ form {
   }
   .register-container input:focus {
     outline: none;
-    box-shadow: 0 0 2px 1px rgb(92, 211, 94);
+    box-shadow: 0 0 2px 1px rgb(107, 107, 107);
   }
   button[type="submit"] {
     width: 100%;
     border-radius: 5px;
-    background-color: rgb(83, 138, 84);
+    background-color: rgb(0, 0, 0);
     border: 1px solid #b3b0b0;
     color: white;
-    font-size: 16px;
+    font-size: large;
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
     padding: 20px;
+    transition: background-color 0.3s, transform 0.2s;
   }
 
   button[type="submit"]:hover {
