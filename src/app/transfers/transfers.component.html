@@ -2,16 +2,33 @@
   <div class="grid-container">
     <div class="form-column">
       <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
-        <input type="text" formControlName="recipient" required placeholder="Recipient username or CBU">
-        <div *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
-          <span class="error">Please enter a valid recipient</span>
+        <div class="input-group">
+          <label for="recipient">Recipient username or CBU</label>
+          <input type="text" formControlName="recipient" required placeholder="Recipient username or CBU">
+          <div *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
+            <span class="error">Please enter a valid recipient</span>
+          </div>
         </div>
-        <label for="transferAmount">Amount to transfer:</label>
-        <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
-        <div *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
-          <span class="error">The minimum to transfer is $100</span>
+        <div class="input-group">
+          <label for="transferAmount">Amount to transfer:</label>
+          <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
+          <div *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
+            <span class="error">The minimum to transfer is $100</span>
+          </div>
         </div>
-        <button type="submit">Transfer</button>
+        <div class="checkbox-container">
+          <input type="checkbox" id="contact" class="checkbox" formControlName="addToContacts">
+          <label for="contact" class="checkbox-label">Add recipient to the contacts list</label>
+        </div>
+        <div class="select">
+          <mat-form-field appearance="fill">
+            <mat-label>Transfer to a contact</mat-label>
+            <mat-select formControlName="selectedContact">
+              <mat-option *ngFor="let contact of contacts" [value]="contact">{{ contact }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button type="submit" class="btn btn-primary">Transfer</button>
       </form>
       <app-loading-circle *ngIf="isLoading"></app-loading-circle>
     </div>
@@ -23,6 +40,6 @@
       <p>Transfers are processed immediately. Funds will be available in the recipient's account on the same business day.</p>
       <h3>Policies</h3>
       <p>Check our terms and conditions to learn the full policies regarding money transfers.</p>
-    </div>    
+    </div>
   </div>
 </div>

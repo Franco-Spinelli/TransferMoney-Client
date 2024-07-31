@@ -11,3 +11,16 @@
     text-decoration: none;
     color: white;
   }
+  .nav{
+    background-color: black;
+  }
+
+  .button-nav{
+    color: white;
+  }
+  .dashboard-button:hover {
+    color: #337ab7;
+  }
+  .button-nav:hover {
+    color: #337ab7;
+  }

@@ -27,4 +27,7 @@ export class UserServiceService {
   deposit(amount:any):Observable<any>{
     return this.http.put<any>(environment.urlApi + '/user/deposit', amount)
   }
+  getContacts():Observable<string[]>{
+    return this.http.get<string[]>(environment.urlApi +'/user/get-contacts');
+  }
 }

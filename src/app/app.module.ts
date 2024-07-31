@@ -25,6 +25,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AddMoneyComponent } from './add-money/add-money.component';
 import { LoadingCircleComponent } from './loading-circle/loading-circle.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +55,11 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     MatMenuModule,
     MatGridListModule,
     MatCardModule,
-    ClipboardModule
+    ClipboardModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [
     provideAnimationsAsync(),
