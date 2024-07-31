@@ -26,27 +26,37 @@ export class TransfersHistoryComponent {
     })
   }
   previousPageMade() {
-    this.currentPageMade--;
+    if (this.currentPageMade > 1) {
+      this.currentPageMade--;
+    }
   }
- 
+  
   nextPageMade() {
-    this.currentPageMade++;
+    if (this.currentPageMade < this.totalPagesMade) {
+      this.currentPageMade++;
+    }
   }
+  
   previousPageReceived() {
-    this.currentPageReceived--;
+    if (this.currentPageReceived > 1) {
+      this.currentPageReceived--;
+    }
   }
- 
+  
   nextPageReceived() {
-    this.currentPageReceived++;
+    if (this.currentPageReceived < this.totalPagesReceived) {
+      this.currentPageReceived++;
+    }
   }
- 
  
   get totalPagesReceived() {
-    return Math.ceil(this.transfersReceived.length / this.productsPerPageReceived);
+    return Math.max(1, Math.ceil(this.transfersReceived.length / this.productsPerPageReceived));
   }
+  
   get totalPagesMade() {
-    return Math.ceil(this.transfersMade.length / this.productsPerPageMade);
+    return Math.max(1, Math.ceil(this.transfersMade.length / this.productsPerPageMade));
   }
+  
   
   get paginatedTransfersMade() {
     const startIndex = (this.currentPageMade - 1) * this.productsPerPageMade;
