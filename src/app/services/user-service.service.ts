@@ -30,4 +30,7 @@ export class UserServiceService {
   getContacts():Observable<string[]>{
     return this.http.get<string[]>(environment.urlApi +'/user/get-contacts');
   }
+  getUserDetails(userRequest: any):Observable<any>{
+    return this.http.post<any>(environment.urlApi +'/user/get-user',userRequest);
+  }
 }

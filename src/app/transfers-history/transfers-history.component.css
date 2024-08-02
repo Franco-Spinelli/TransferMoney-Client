@@ -4,17 +4,12 @@
   }
 .transfer-list-container {
     margin-top: 40px;
-   
-    background-color: #f7f7f7; 
     display: flex;
     justify-content: space-between;
     gap: 20px;
   }
   .card {
     margin-bottom: 20px;
-    background-color: #fff; 
-    border: 1px solid #ddd; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     flex: 1;
     text-align: center;
   }

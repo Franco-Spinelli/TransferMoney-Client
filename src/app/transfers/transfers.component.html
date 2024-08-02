@@ -1,24 +1,14 @@
 <div class="container">
   <div class="grid-container">
     <div class="form-column">
-      <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="transferForm" (ngSubmit)="searchUser()">
         <div class="input-group">
           <label for="recipient">Recipient username or CBU</label>
           <input type="text" formControlName="recipient" required placeholder="Recipient username or CBU">
-          <div *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
+          <div
+            *ngIf="transferForm.get('recipient')?.invalid && (transferForm.get('recipient')?.dirty || transferForm.get('recipient')?.touched)">
             <span class="error">Please enter a valid recipient</span>
           </div>
-        </div>
-        <div class="input-group">
-          <label for="transferAmount">Amount to transfer:</label>
-          <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
-          <div *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
-            <span class="error">The minimum to transfer is $100</span>
-          </div>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="contact" class="checkbox" formControlName="addToContacts">
-          <label for="contact" class="checkbox-label">Add recipient to the contacts list</label>
         </div>
         <div class="select">
           <mat-form-field appearance="fill">
@@ -28,18 +18,49 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <button type="submit" class="btn btn-primary">Transfer</button>
+        <button type="submit" class="btn btn-primary">Valid</button>
       </form>
       <app-loading-circle *ngIf="isLoading"></app-loading-circle>
     </div>
     <div class="info-column">
       <h2>Additional Information</h2>
       <h3>Fees</h3>
-      <p>Transfers between Tran$ferMoney accounts are free. For transfers to other institutions, fees apply based on the amount and destination.</p>
+      <p>Transfers between Tran$ferMoney accounts are free. For transfers to other institutions, fees apply based on the
+        amount and destination.</p>
       <h3>Processing Times</h3>
-      <p>Transfers are processed immediately. Funds will be available in the recipient's account on the same business day.</p>
+      <p>Transfers are processed immediately. Funds will be available in the recipient's account on the same business
+        day.</p>
       <h3>Policies</h3>
       <p>Check our terms and conditions to learn the full policies regarding money transfers.</p>
+    </div>
+  </div>
+  <div class="modal" *ngIf="userSearch">
+    <div class="modal-content">
+      <button class="close-modal" (click)="hideDetails()">
+        <mat-icon class="mat-icon-button">close</mat-icon>
+      </button>
+      <div class="modal-body">
+        <p class="name">{{userData.firstname}} {{userData.lastname}}</p>
+        <p class="dni">DNI: {{ userData?.dni }}</p>
+        <p class="cbu">CBU: {{ userData?.cbu }}</p>
+        <p class="username">Username: {{ userData?.username }}</p>
+        <form [formGroup]="amountForm">
+          <div class="input-group">
+            <label for="transferAmount">Amount to transfer:</label>
+            <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
+            <div
+              *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
+              <span class="error">The minimum to transfer is $100</span>
+            </div>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="contact" class="checkbox" formControlName="addToContacts">
+            <label for="contact" class="checkbox-label">Add recipient to the contacts list</label>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Transfer</button>
+        </form>
+        <app-loading-circle *ngIf="isLoading"></app-loading-circle>
+      </div>
     </div>
   </div>
 </div>

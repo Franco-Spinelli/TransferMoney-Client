@@ -5,6 +5,7 @@ import { UserServiceService } from '../services/user-service.service';
 import { CreateTransfer } from '../services/createTransfer';
 import { Router } from '@angular/router';
 import { LoadingCircleComponent } from '../loading-circle/loading-circle.component';
+import { User } from '../services/user';
 
 @Component({
   selector: 'app-transfers',
@@ -13,19 +14,23 @@ import { LoadingCircleComponent } from '../loading-circle/loading-circle.compone
 })
 export class TransfersComponent implements OnInit {
   transferForm: FormGroup;
+  amountForm: FormGroup;
   contacts: string[];
   selectedValue: string;
+  userSearch: boolean;
+  userData:any;
   isLoading = false;
   constructor(private fb: FormBuilder, private userService: UserServiceService, private router: Router, private loadingCircle: LoadingCircleComponent) {
     this.transferForm = this.fb.group({
       recipient: ['', [Validators.required, Validators.minLength(4)]],
-      transferAmount: [0, [Validators.required, Validators.min(100)]],
-      addToContacts: [false],
       selectedContact: ['']
+    });
+    this.amountForm = this.fb.group({
+      transferAmount: [0, [Validators.required, Validators.min(100)]],
+      addToContacts: [false]
     });
     this.transferForm.get('selectedContact')?.valueChanges.subscribe(value => {
       this.transferForm.get('recipient')?.setValue(value, { emitEvent: false });
-
     });
     this.transferForm.get('recipient')?.valueChanges.subscribe(value => {
       if (value !== this.transferForm.get('selectedContact')?.value) {
@@ -44,14 +49,15 @@ export class TransfersComponent implements OnInit {
     this.loadingCircle.startLoading();
     if (this.transferForm.valid) {
       const formValue = this.transferForm.value;
+      const amountValue = this.amountForm.value;
       const transferDTO: any = {
-        transferAmount: formValue.transferAmount,
+        transferAmount: amountValue.transferAmount,
         recipientUser: null,
         recipientCbu: null,
       }
       const request: CreateTransfer = {
         transferDTO: transferDTO,
-        addContact: formValue.addToContacts
+        addContact: amountValue.addToContacts
       };
       if (isNaN(Number(formValue.recipient))) {
         transferDTO.recipientUser = formValue.recipient;
@@ -60,6 +66,7 @@ export class TransfersComponent implements OnInit {
       }
 
       this.userService.postTransfer(request).subscribe((data) => {
+        console.log('Transfer response:', data); 
         alert("Transfer success!");
         this.isLoading = false;
         this.loadingCircle.stopLoading();
@@ -74,5 +81,40 @@ export class TransfersComponent implements OnInit {
     } else {
       console.log('Form no valid');
     }
+  }
+  searchUser(){
+    this.isLoading = true;
+    this.loadingCircle.startLoading();
+    const request = {
+      cbu: null,
+      username:null
+    }
+    if(this.transferForm.valid){
+      const formValue = this.transferForm.value;
+    if (isNaN(Number(formValue.recipient))) {
+      request.username = formValue.recipient;
+    } else {
+      request.cbu = formValue.recipient;
+    }
+    this.userService.getUserDetails(request).subscribe((data)=>{
+      this.isLoading = false;
+      this.loadingCircle.stopLoading();
+        this.userData = data;
+        this.userSearch=true;
+        console.log(data);
+        
+    },
+    (error)=>{
+      alert("user not found! Please check the recipient data")
+      this.isLoading = false;
+      this.loadingCircle.stopLoading();
+    })
+    }else {
+      console.log('Form no valid');
+    }
+  }
+
+  hideDetails() {
+    this.userSearch=false;
   }
 }

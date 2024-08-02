@@ -233,7 +233,7 @@ body {
   @media (max-width: 768px) {
     .features-grid {
       flex-direction: column;
-      margin-right: 4.55rem;
+      align-items: center;
     }
   }
   @media (min-width: 992px) {
