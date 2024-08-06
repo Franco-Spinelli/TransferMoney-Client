@@ -49,7 +49,7 @@
             <label for="transferAmount">Amount to transfer:</label>
             <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
             <div
-              *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
+              *ngIf="amountForm.get('transferAmount')?.invalid && (amountForm.get('transferAmount')?.dirty || amountForm.get('transferAmount')?.touched)">
               <span class="error">The minimum to transfer is $100</span>
             </div>
           </div>
@@ -60,6 +60,33 @@
           <button type="submit" class="btn btn-primary" (click)="onSubmit()">Transfer</button>
         </form>
         <app-loading-circle *ngIf="isLoading" class="loading"></app-loading-circle>
+      </div>
+    </div>
+  </div>
+  <div class="modal" *ngIf="transferSuccess">
+    <div class="modal-status">
+      <div class="modal-body">
+        <img src="assets/img/accept.png" alt="Transfer Success" class="modal-image">
+        <p class="modal-text">Transfer Success</p>
+        <button type="submit" class="btn-status btn-primary" routerLink="/user-dashboard">Go to menu</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" *ngIf="transferError">
+    <div class="modal-status">
+      <div class="modal-body">
+        <img src="assets/img/error.png" alt="Transfer Error" class="modal-image">
+        <p class="modal-text">error unexpected! Please check the recipient data or your balance!</p>
+        <button type="submit" class="btn-status btn-primary" (click)="closeModalError()">Try again</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" *ngIf="userNotFound">
+    <div class="modal-status">
+      <div class="modal-body">
+        <img src="assets/img/alert.png" alt="Alert" class="modal-image">
+        <p class="modal-text">User not found! Please check the recipient data</p>
+        <button type="submit" class="btn-status btn-primary" (click)="closeModalAlert()">Try again</button>
       </div>
     </div>
   </div>

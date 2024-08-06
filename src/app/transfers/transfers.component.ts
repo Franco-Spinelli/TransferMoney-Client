@@ -18,6 +18,9 @@ export class TransfersComponent implements OnInit {
   contacts: string[];
   selectedValue: string;
   userSearch: boolean;
+  transferSuccess: boolean;
+  transferError: boolean;
+  userNotFound: boolean;
   userData:any;
   isLoading = false;
   constructor(private fb: FormBuilder, private userService: UserServiceService, private router: Router, private loadingCircle: LoadingCircleComponent) {
@@ -26,7 +29,7 @@ export class TransfersComponent implements OnInit {
       selectedContact: ['']
     });
     this.amountForm = this.fb.group({
-      transferAmount: [0, [Validators.required, Validators.min(100)]],
+      transferAmount: [, [Validators.required, Validators.min(100)]],
       addToContacts: [false]
     });
     this.transferForm.get('selectedContact')?.valueChanges.subscribe(value => {
@@ -67,13 +70,14 @@ export class TransfersComponent implements OnInit {
 
       this.userService.postTransfer(request).subscribe((data) => {
         console.log('Transfer response:', data); 
-        alert("Transfer success!");
         this.isLoading = false;
         this.loadingCircle.stopLoading();
-        this.router.navigateByUrl("/user-dashboard")
+        this.userSearch=false;
+        this.transferSuccess=true;
 
       }, (error) => {
-        alert("error unexpected! Please check the recipient data or your balance!")
+        this.userSearch=false;
+        this.transferError = true;
         this.isLoading = false;
         this.loadingCircle.stopLoading();
       })
@@ -101,11 +105,9 @@ export class TransfersComponent implements OnInit {
       this.loadingCircle.stopLoading();
         this.userData = data;
         this.userSearch=true;
-        console.log(data);
-        
     },
     (error)=>{
-      alert("user not found! Please check the recipient data")
+      this.userNotFound=true;
       this.isLoading = false;
       this.loadingCircle.stopLoading();
     })
@@ -113,7 +115,12 @@ export class TransfersComponent implements OnInit {
       console.log('Form no valid');
     }
   }
-
+  closeModalError() {
+    this.transferError=false;
+  }
+  closeModalAlert() {
+    this.userNotFound=false;
+  }
   hideDetails() {
     this.userSearch=false;
   }
