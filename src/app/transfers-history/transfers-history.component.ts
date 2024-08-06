@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Transfer } from '../services/transfer';
 import { UserServiceService } from '../services/user-service.service';
-import { InvoiceService } from '../invoice.service';
 
 @Component({
   selector: 'app-transfers-history',
@@ -16,7 +15,7 @@ export class TransfersHistoryComponent {
   productsPerPageMade = 4;
   currentPageReceived = 1;
   productsPerPageReceived  = 4;
-  constructor(userService: UserServiceService, private invoiceService: InvoiceService){
+  constructor(userService: UserServiceService){
     userService.getTransfersMade().subscribe((data)=>{
       this.transfersMade=data;
       this.transfersMade=this.transfersMade.reverse();
@@ -68,8 +67,5 @@ export class TransfersHistoryComponent {
     const startIndex = (this.currentPageReceived - 1) * this.productsPerPageReceived;
     const endIndex = startIndex + this.productsPerPageReceived;
     return this.transfersReceived.slice(startIndex, endIndex);
-  }
-  generatePdf(transfer:Transfer): void {
-    this.invoiceService.generateTransferPdf(transfer);
   }
 }

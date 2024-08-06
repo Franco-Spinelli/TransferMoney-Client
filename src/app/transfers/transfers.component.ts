@@ -13,7 +13,6 @@ import { User } from '../services/user';
   styleUrl: './transfers.component.css'
 })
 export class TransfersComponent implements OnInit {
-  user:User;
   transferForm: FormGroup;
   amountForm: FormGroup;
   contacts: string[];
@@ -27,7 +26,7 @@ export class TransfersComponent implements OnInit {
       selectedContact: ['']
     });
     this.amountForm = this.fb.group({
-      transferAmount: [, [Validators.required, Validators.min(100)]],
+      transferAmount: [0, [Validators.required, Validators.min(100)]],
       addToContacts: [false]
     });
     this.transferForm.get('selectedContact')?.valueChanges.subscribe(value => {
@@ -38,9 +37,6 @@ export class TransfersComponent implements OnInit {
         this.transferForm.get('selectedContact')?.setValue('', { emitEvent: false });
       }
     });
-    userService.getUser().subscribe((data)=>{
-      this.user = data;
-    })
 
   }
   ngOnInit(): void {
@@ -105,6 +101,7 @@ export class TransfersComponent implements OnInit {
       this.loadingCircle.stopLoading();
         this.userData = data;
         this.userSearch=true;
+        console.log(data);
         
     },
     (error)=>{
