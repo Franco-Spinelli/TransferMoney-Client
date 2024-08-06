@@ -47,9 +47,9 @@
         <form [formGroup]="amountForm">
           <div class="input-group">
             <label for="transferAmount">Amount to transfer:</label>
-            <input type="number" formControlName="transferAmount" required placeholder="Amount to transfer">
+            <input type="number" formControlName="transferAmount" required [placeholder]=" 'Money available $' + user.moneyAccount">
             <div
-              *ngIf="transferForm.get('transferAmount')?.invalid && (transferForm.get('transferAmount')?.dirty || transferForm.get('transferAmount')?.touched)">
+              *ngIf="amountForm.get('transferAmount')?.invalid && (amountForm.get('transferAmount')?.dirty || amountForm.get('transferAmount')?.touched)">
               <span class="error">The minimum to transfer is $100</span>
             </div>
           </div>

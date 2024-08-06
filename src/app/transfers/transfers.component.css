@@ -101,7 +101,9 @@
   font-size: 14px;
   margin-bottom: 10px;
 }
-
+h3{
+  font-weight: bold;
+}
 app-loading-circle {
   position: relative;
   top: 1rem;

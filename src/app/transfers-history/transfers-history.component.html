@@ -20,11 +20,12 @@
                             <span class="label">User Who Transferred:</span> <span class="value">{{ transfer.originUser }}</span>
                         </p>
                         <p>
-                            <span class="label">Amount:</span> <span class="value transfer-amount" style="color: red;">-${{ transfer.transferAmount }}</span>
+                            <span class="label">Amount:</span> <span class="value transfer-amount" style="color: red;">-${{ transfer.transferAmount | number:'1.0-0' }}</span>
                         </p>
                         <p>
                             <span class="label">Date:</span> <span class="value transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span>
                         </p>
+                        <button (click)="generatePdf(transfer)" class="btn-invoice">Dowload invoice</button>
                     </div>
                 </mat-card>
             </li>
@@ -58,11 +59,12 @@
                                 <span class="label">User Who Transferred:</span> <span class="value">{{ transfer.originUser }}</span>
                             </p>
                             <p>
-                                <span class="label">Amount:</span> <span class="value transfer-amount" >+${{ transfer.transferAmount }}</span>
+                                <span class="label">Amount:</span> <span class="value transfer-amount" >+${{ transfer.transferAmount | number:'1.0-0' }}</span>
                             </p>
                             <p>
                                 <span class="label">Date:</span> <span class="value transfer-date">{{ transfer.transferDate | date: 'dd/MM/yyyy HH:mm' }}</span>
                             </p>
+                            <button (click)="generatePdf(transfer)" class="btn-invoice">Dowload invoice</button>
                         </div>
                     </mat-card>
                 </li>

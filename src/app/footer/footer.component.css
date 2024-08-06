@@ -1,6 +1,5 @@
 
 footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -8,7 +7,6 @@ footer {
     color: #fff;
     padding: 8px;
     text-align: center;
-    z-index: 1000;
   }
   a{
     color: #fff;
