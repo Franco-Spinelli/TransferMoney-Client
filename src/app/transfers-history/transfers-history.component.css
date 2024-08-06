@@ -110,9 +110,6 @@
   .pagination .page-number:hover {
     color: #333;
   }
-  mat-card-header{
-    justify-content: center;
-  }
   
   @media only screen and (max-width: 768px) {
     .transfer-list-container {

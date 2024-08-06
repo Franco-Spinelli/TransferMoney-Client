@@ -1,5 +1,5 @@
 export interface Transfer {
-    transfer_id?: number;
+    id?: number;
     recipientUser:string;
     recipientCbu:number;
     originUser:string;

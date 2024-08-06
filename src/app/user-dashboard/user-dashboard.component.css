@@ -128,13 +128,6 @@
   text-align: left; 
   margin-left: 0.5rem;
 }
-.btn-invoice {
-  background-color: #2980b9;
-  color: #fff;
-  padding: 10px 10px;
-  border: none;
-  border-radius: 5px;
-}
 @media (max-width: 768px) {
   .transfer-list {
     flex-direction: column; 

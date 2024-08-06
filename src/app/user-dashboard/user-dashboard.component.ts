@@ -3,7 +3,6 @@ import { UserServiceService } from '../services/user-service.service';
 import { User } from '../services/user';
 import { Transfer } from '../services/transfer';
 import {Clipboard} from '@angular/cdk/clipboard'
-import { InvoiceService } from '../invoice.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -14,7 +13,7 @@ export class UserDashboardComponent {
   private clipboard = inject(Clipboard)
   user: User;
   transfers: Transfer[];
-  constructor(userService: UserServiceService, private invoiceService: InvoiceService){
+  constructor(userService: UserServiceService){
     userService.getUser().subscribe((data)=>{
       this.user = data;
     })
@@ -26,8 +25,5 @@ export class UserDashboardComponent {
   copyText(){
     this.clipboard.copy(this.user.cbu ?? '');
     alert("Copy succesful!")
-  }
-  generatePdf(transfer:Transfer): void {
-    this.invoiceService.generateTransferPdf(transfer);
   }
 }
